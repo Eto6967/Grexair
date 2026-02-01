@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrexAir</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='logo.png') }}">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/theme.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/layout.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/components.css') }}">
+    
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+</head>
+<body>
+
+    <div id="preloader">
+        <div class="loader-content">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="Loading..." class="pulse-logo">
+        </div>
+    </div>
+
+    <nav>
+        <div class="brand-wrapper">
+            <a href="{{ url_for('demo') }}">
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="GrexAir" class="brand-logo">
+            </a>
+        </div>
+        <div class="nav-menu">
+            <a href="{{ url_for('demo') }}" class="nav-link {% if page == 'demo' %}active{% endif %}">Áttekintés</a>
+            <a href="{{ url_for('monitor') }}" class="nav-link {% if page == 'monitor' %}active{% endif %}">Monitor</a>
+            <a href="{{ url_for('upload') }}" class="nav-link {% if page == 'upload' %}active{% endif %}">Feltöltés</a>
+            
+            <button id="theme-toggle" class="nav-btn">
+                <i class="fas fa-sun"></i> </button>
+        </div>
+    </nav>
+
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,33 @@
+/* --- SZÍNPALETTA & VÁLTOZÓK --- */
+
+/* LIGHT MODE (Alapértelmezett) */
+:root {
+    --bg-color: #f4f7f6;
+    --card-bg: #ffffff;
+    --text-color: #333333;
+    --nav-bg: #ffffff;
+    --accent: #23a6d5;
+    --border-color: #ddd;
+    --shadow: 0 4px 15px rgba(0,0,0,0.1);
+    
+    /* Státusz színek */
+    --good: #2ecc71;
+    --warn: #f1c40f;
+    --bad: #e74c3c;
+}
+
+/* DARK MODE */
+body.dark-mode {
+    --bg-color: #121212;
+    --card-bg: #1e1e1e;
+    --text-color: #e0e0e0;
+    --nav-bg: #1e1e1e;
+    --accent: #5DADE2;
+    --border-color: #333;
+    --shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+/* Átmenetek a váltáshoz */
+body {
+    transition: background 0.3s, color 0.3s;
+}

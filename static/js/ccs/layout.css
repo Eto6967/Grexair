@@ -1,0 +1,66 @@
+/* --- ALAP ELRENDEZÉS --- */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding-top: 80px; /* Hely a fix menünek */
+}
+
+.container {
+    max-width: 1250px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* --- NAVIGÁCIÓ --- */
+nav {
+    background: var(--nav-bg);
+    height: 70px;
+    display: flex;
+    align-items: center;
+    padding: 0 25px;
+    box-shadow: var(--shadow);
+    position: fixed;
+    top: 0; 
+    width: 100%;
+    z-index: 1000;
+    box-sizing: border-box;
+    transition: background 0.3s;
+}
+
+.brand-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.brand-logo {
+    height: 40px;
+    transition: filter 0.3s;
+}
+
+/* Logó inverz trükk sötét módban */
+body.dark-mode .brand-logo {
+    filter: invert(1) brightness(2);
+}
+
+.nav-menu {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-link {
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.nav-link:hover, .nav-link.active {
+    background: var(--accent);
+    color: white;
+}

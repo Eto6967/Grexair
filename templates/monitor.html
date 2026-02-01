@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="hero-section" style="margin-bottom: 30px; display: flex; align-items: center; justify-content: space-between;">
+        <div>
+            <div style="display:flex; align-items:center; gap:10px; margin-bottom:10px;">
+                <span style="position:relative; width:10px; height:10px;">
+                    <span style="position:absolute; width:100%; height:100%; background:var(--success); border-radius:50%; opacity:0.7; animation:ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;"></span>
+                    <span style="position:relative; display:block; width:10px; height:10px; background:var(--success); border-radius:50%;"></span>
+                </span>
+                <span style="font-size:0.8rem; font-weight:700; color:var(--success); letter-spacing:0.1em; text-transform:uppercase;">ÉLŐ KAPCSOLAT</span>
+            </div>
+            <h1>Szenzor Monitor</h1>
+        </div>
+        
+        <div style="text-align: right; color: var(--text-muted); font-size: 0.85rem;">
+            Frissítve: <span id="last-update" style="color: var(--text-primary); font-weight: 600;">--:--:--</span>
+        </div>
+    </div>
+
+    <div id="status-box" class="status-card" style="text-align:center; padding: 16px; margin-bottom: 30px; border-radius: var(--radius); font-weight: 700; background: var(--bg-card); border: 1px solid var(--border-subtle); transition: all 0.3s;">
+        <i class="fas fa-sync fa-spin"></i> Kapcsolódás a Neon felhőhöz...
+    </div>
+
+    <div class="kpi-container">
+        
+        <div class="kpi-card primary">
+            <div class="value">
+                <span id="kpi-current">--</span><span class="unit">ppm</span>
+            </div>
+            <h3>Jelenlegi szint</h3>
+        </div>
+        
+        <div class="kpi-card min-card">
+            <div class="value">
+                <span id="kpi-min">--</span><span class="unit">ppm</span>
+            </div>
+            <h3>Napi Minimum</h3>
+        </div>
+
+        <div class="kpi-card max-card">
+            <div class="value">
+                <span id="kpi-max">--</span><span class="unit">ppm</span>
+            </div>
+            <h3>Napi Maximum</h3>
+        </div>
+    </div>
+
+    <span class="section-title" style="display:block; margin-bottom:20px; color:var(--text-muted); font-size:0.8rem; font-weight:600; text-transform:uppercase; letter-spacing:1px;">Valós idejű stream</span>
+    
+    <div class="chart-wrapper" id="chart-container" style="position: relative; min-height: 500px;">
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: var(--text-muted);">
+            <i class="fas fa-chart-line fa-2x" style="margin-bottom: 10px; opacity: 0.5;"></i>
+            <p>Grafikon betöltése...</p>
+        </div>
+    </div>
+    
+    <div class="section-spacer"></div>
+
+    <style>
+        @keyframes ping {
+            75%, 100% { transform: scale(2); opacity: 0; }
+        }
+    </style>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{{ url_for('static', filename='js/monitor.js') }}"></script>
+{% endblock %}

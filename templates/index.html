@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="hero-section" style="margin-bottom: 40px; padding-top: 20px;">
+        <h1 style="font-size: 3rem; font-weight: 800; margin-bottom: 10px;">CO₂ Áttekintés</h1>
+        <div class="subtitle">Archív adatok és trendek elemzése.</div>
+    </div>
+
+    {% if kpi %}
+    <span class="section-title" style="display:block; margin-bottom:20px; color:var(--text-muted); font-size:0.8rem; font-weight:600; text-transform:uppercase; letter-spacing:1px;">Kulcsértékek</span>
+    
+    <div class="kpi-container">
+        
+        <div class="kpi-card primary">
+            <div class="value">{{ kpi.avg }}<span class="unit">ppm</span></div>
+            <h3>Átlagos koncentráció</h3>
+        </div>
+
+        <div class="kpi-card min-card">
+            <div class="value">{{ kpi.min }}<span class="unit">ppm</span></div>
+            <h3>Minimum</h3>
+        </div>
+
+        <div class="kpi-card max-card">
+            <div class="value">{{ kpi.max }}<span class="unit">ppm</span></div>
+            <h3>Maximum</h3>
+        </div>
+
+    </div>
+    {% endif %}
+
+    <span class="section-title" style="display:block; margin-bottom:20px; color:var(--text-muted); font-size:0.8rem; font-weight:600; text-transform:uppercase; letter-spacing:1px;">Időbeli alakulás</span>
+    <div class="chart-wrapper">
+        {{ graph_html | safe }}
+    </div>
+    <div style="height: 60px;"></div>
+{% endblock %}
